@@ -17,6 +17,6 @@ class Karyawan extends Model
         'status',
         'gaji',
         'alamat',
-        'foto'
+        'foto',
     ];
 }
