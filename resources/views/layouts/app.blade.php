@@ -52,7 +52,14 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('cuti.index') }}">
                         <i class="fas fa-file-signature"></i>
-                        pengajuan cuti
+                        Pengajuan Cuti
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('pengumuman.index') }}">
+                        <i class="fas fa-bullhorn"></i>
+                        Pengumuman
                     </a>
                 </li>
 

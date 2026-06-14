@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\AbsensiController;
 use App\Http\Controllers\CutiController;
+use App\Http\Controllers\PengumumanController;
 
 Route::get('/', function () {
     return redirect()->route('login');
@@ -27,6 +28,10 @@ Route::middleware(['auth', 'admin'])->group(function () {
     // Persetujuan cuti
     Route::put('/cuti/{cuti}/setujui', [CutiController::class, 'setujui'])->name('cuti.setujui');
     Route::put('/cuti/{cuti}/tolak', [CutiController::class, 'tolak'])->name('cuti.tolak');
+
+    // Pengumuman
+    Route::get('/pengumuman/create', [PengumumanController::class, 'create'])->name('pengumuman.create');
+    Route::post('/pengumuman', [PengumumanController::class, 'store'])->name('pengumuman.store');
 });
 
 Route::middleware('auth')->group(function () {
@@ -46,4 +51,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/cuti', [CutiController::class, 'index'])->name('cuti.index');
     Route::get('/cuti/create', [CutiController::class, 'create'])->name('cuti.create');
     Route::post('/cuti', [CutiController::class, 'store'])->name('cuti.store');
+
+    // Pengumuman
+    Route::get('/pengumuman', [PengumumanController::class, 'index'])->name('pengumuman.index');
 });
