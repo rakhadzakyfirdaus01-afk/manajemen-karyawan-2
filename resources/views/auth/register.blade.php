@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
 
-    <title>Login - Manajemen Karyawan</title>
+    <title>Daftar Akun - Manajemen Karyawan</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
           rel="stylesheet">
@@ -36,9 +36,9 @@
 
         }
 
-        .login-card{
+        .register-card{
 
-            width:450px;
+            width:500px;
 
             background:rgba(255,255,255,.1);
 
@@ -52,21 +52,13 @@
 
             color:white;
 
-            transition:.4s;
-
-        }
-
-        .login-card:hover{
-
-            transform:translateY(-8px);
-
         }
 
         .logo{
 
             font-size:70px;
 
-            color:#fff;
+            color:white;
 
         }
 
@@ -92,13 +84,7 @@
 
         }
 
-        .form-control::placeholder{
-
-            color:#ddd;
-
-        }
-
-        .btn-login{
+        .btn-register{
 
             background:#7c4dff;
 
@@ -112,7 +98,7 @@
 
         }
 
-        .btn-login:hover{
+        .btn-register:hover{
 
             background:#673ab7;
 
@@ -131,21 +117,21 @@
 </head>
 <body>
 
-<div class="login-card p-5">
+<div class="register-card p-5">
 
     <div class="text-center mb-4">
 
-        <i class="fas fa-users logo"></i>
+        <i class="fas fa-user-plus logo"></i>
 
         <h2 class="fw-bold mt-3">
 
-            Manajemen Karyawan
+            Daftar Akun
 
         </h2>
 
         <p>
 
-            Silakan login ke akun Anda
+            Buat akun baru
 
         </p>
 
@@ -156,17 +142,37 @@
 
         <div class="alert alert-danger">
 
-            {{ $errors->first() }}
+            <ul class="mb-0">
+
+                @foreach($errors->all() as $error)
+
+                    <li>{{ $error }}</li>
+
+                @endforeach
+
+            </ul>
 
         </div>
 
     @endif
 
 
-    <form action="{{ route('login') }}"
+    <form action="{{ route('register') }}"
           method="POST">
 
         @csrf
+
+        <div class="mb-3">
+
+            <label>Nama</label>
+
+            <input type="text"
+                   name="name"
+                   class="form-control"
+                   required>
+
+        </div>
+
 
         <div class="mb-3">
 
@@ -180,7 +186,7 @@
         </div>
 
 
-        <div class="mb-4">
+        <div class="mb-3">
 
             <label>Password</label>
 
@@ -192,11 +198,23 @@
         </div>
 
 
-        <button class="btn btn-login w-100">
+        <div class="mb-4">
 
-            <i class="fas fa-sign-in-alt me-2"></i>
+            <label>Konfirmasi Password</label>
 
-            Login
+            <input type="password"
+                   name="password_confirmation"
+                   class="form-control"
+                   required>
+
+        </div>
+
+
+        <button class="btn btn-register w-100">
+
+            <i class="fas fa-user-plus me-2"></i>
+
+            Daftar
 
         </button>
 
@@ -207,11 +225,11 @@
 
     <div class="text-center">
 
-        Belum punya akun?
+        Sudah punya akun?
 
-        <a href="{{ route('register') }}">
+        <a href="{{ route('login') }}">
 
-            Daftar sekarang
+            Login
 
         </a>
 
